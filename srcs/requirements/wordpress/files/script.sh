@@ -5,12 +5,6 @@ mkdir /var/www/
 mkdir /var/www/html
 cd /var/www/html
 
-#install Wordpress 
-wget http://wordpress.org/latest.tar.gz 
-tar -xvf latest.tar.gz
-rm /var/www/html/latest.tar.gz
-cp -r wordpress/* .
-rm -rf wordpress
 
 #install wp
 wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
@@ -32,6 +26,6 @@ wp plugin update --all --allow-root
 
 # change port in php
 sed -i 's/listen = \/run\/php\/php7.4-fpm.sock/listen = 9000/g' /etc/php/7.4/fpm/pool.d/www.conf
-mkdir /run/php
+
 # run 
 /usr/sbin/php-fpm7.4 -F
