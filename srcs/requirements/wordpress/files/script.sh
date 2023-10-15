@@ -1,15 +1,15 @@
 #!/bin/bash
 
 #create folder
-mkdir /var/www/
-mkdir /var/www/html
+mkdir -p /var/www/html
 cd /var/www/html
 
-
 #install wp
+
 wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 chmod +x wp-cli.phar
 mv wp-cli.phar /usr/local/bin/wp
+#more
 wp core download --allow-root
 
 mv /wp-config.php /var/www/html/wp-config.php
@@ -25,6 +25,7 @@ wp user create $WP_USER $WP_USER_EMAIL --role=author --user_pass=$WP_USER_PASSWO
 wp plugin update --all --allow-root
 
 # change port in php
+#more
 sed -i 's/listen = \/run\/php\/php7.4-fpm.sock/listen = 9000/g' /etc/php/7.4/fpm/pool.d/www.conf
 
 # run 
