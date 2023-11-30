@@ -5,14 +5,14 @@ volumes:
     name: volume_wp
     driver: local
     driver_opts:
-      device: /Users/oakoudad/Volumes/wordpress
+      device: /home/oakoudad/data/WordPress
       o: bind
       type: none
   mariadb:
     name: volume_mariadb
     driver: local
     driver_opts:
-      device: /Users/oakoudad/Volumes/DB
+      device: /home/oakoudad/data/DB
       o: bind
       type: none
 networks:
