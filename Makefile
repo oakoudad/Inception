@@ -11,6 +11,7 @@ restart: down up
 purge:
 	docker rm nginx mariadb wordpress -f
 	docker rmi nginx:1337 mariadb:1337 wordpress:1337 -f
+	docker volume rm volume_mariadb volume_wp
 	docker volume prune -f
 	docker network prune -f
 	docker system prune -f
