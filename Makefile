@@ -1,5 +1,6 @@
 COMPOSE_FILE := ./srcs/docker-compose.yml
-
+# DIR = /Users/oakoudad/Volumes
+DIR = /home/oakoudad/data
 up:
 	docker-compose -f $(COMPOSE_FILE) up --build -d
 
@@ -17,7 +18,7 @@ purge:
 	docker system prune -f
 
 rm_volumes:
-	rm -rf /home/oakoudad/data/DB/*
-	rm -rf /home/oakoudad/data/wordpress/*
+	rm -rf $(DIR)/DB/*
+	rm -rf $(DIR)/WordPress/*
 
 .PHONY: up down restart purge rm_data

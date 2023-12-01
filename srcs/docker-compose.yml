@@ -5,6 +5,7 @@ volumes:
     name: volume_wp
     driver: local
     driver_opts:
+      # device: /Users/oakoudad/Volumes/WordPress
       device: /home/oakoudad/data/WordPress
       o: bind
       type: none
@@ -12,6 +13,7 @@ volumes:
     name: volume_mariadb
     driver: local
     driver_opts:
+      # device: /Users/oakoudad/Volumes/DB
       device: /home/oakoudad/data/DB
       o: bind
       type: none
