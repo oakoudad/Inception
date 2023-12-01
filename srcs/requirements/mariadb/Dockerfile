@@ -6,4 +6,6 @@ COPY ./files/script.sh .
 
 RUN chmod +x script.sh
 
-CMD  ["./script.sh"]
+RUN ./script.sh
+
+CMD  ["mysqld_safe"]
