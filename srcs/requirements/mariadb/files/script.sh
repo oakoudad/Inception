@@ -11,3 +11,4 @@ mariadb -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD' ;
 
 mysqladmin -u root --password=$MYSQL_ROOT_PASSWORD shutdown
 
+mysqld_safe
