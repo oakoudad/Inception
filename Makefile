@@ -18,7 +18,7 @@ purge:
 	docker system prune -f
 
 rm_volumes:
-	rm -rf $(DIR)/DB/*
-	rm -rf $(DIR)/WordPress/*
+	sudo rm -rf $(DIR)/DB/*
+	sudo rm -rf $(DIR)/WordPress/*
 
 .PHONY: up down restart purge rm_data
