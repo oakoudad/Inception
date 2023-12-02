@@ -1,26 +1,6 @@
 version: '3.5'
 
-volumes:
-  wordpress:
-    name: volume_wp
-    driver: local
-    driver_opts:
-      # device: /Users/oakoudad/Volumes/WordPress
-      device: /home/oakoudad/data/WordPress
-      o: bind
-      type: none
-  mariadb:
-    name: volume_mariadb
-    driver: local
-    driver_opts:
-      # device: /Users/oakoudad/Volumes/DB
-      device: /home/oakoudad/data/DB
-      o: bind
-      type: none
-networks:
-  inception:
-    name: inception
-    driver: bridge
+
 services:
   mariadb:
     image: mariadb:1337
@@ -30,19 +10,6 @@ services:
       - 3306
     volumes:
       - mariadb:/var/lib/mysql
-    env_file:
-      - .env
-    networks:
-      - inception
-    restart: always
-  wordpress:
-    image: wordpress:1337
-    container_name: wordpress
-    build: ./requirements/wordpress/.
-    depends_on:
-      - mariadb
-    volumes:
-      - wordpress:/var/www/html
     env_file:
       - .env
     networks:
@@ -62,3 +29,39 @@ services:
       - inception
     env_file:
       - .env
+  wordpress:
+    image: wordpress:1337
+    container_name: wordpress
+    build: ./requirements/wordpress/.
+    depends_on:
+      - mariadb
+    volumes:
+      - wordpress:/var/www/html
+    env_file:
+      - .env
+    networks:
+      - inception
+    restart: always
+
+volumes:
+  wordpress:
+    name: volume_wp
+    driver: local
+    driver_opts:
+      # device: /Users/oakoudad/Volumes/WordPress
+      device: /home/oakoudad/data/WordPress
+      o: bind
+      type: none
+  mariadb:
+    name: volume_mariadb
+    driver: local
+    driver_opts:
+      # device: /Users/oakoudad/Volumes/DB
+      device: /home/oakoudad/data/DB
+      o: bind
+      type: none
+
+networks:
+  inception:
+    name: inception
+    driver: bridge
